@@ -1,4 +1,4 @@
-package inet.showcases.wireless.spectrum;
+package inet.showcases.visualizer.spectrum;
 
 import inet.environment.common.PhysicalEnvironment;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
