@@ -94,7 +94,4 @@ network SpectrumShowcasePowerDensityMapNetwork
         physicalEnvironment: PhysicalEnvironment {
             @display("p=65,257");
         }
-        probe: Probe {
-            @display("p=100,100");
-        }
 }
