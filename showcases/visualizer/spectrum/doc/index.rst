@@ -76,7 +76,7 @@ at any point in the network. This is useful for troubleshooting and understandin
    :align: center
 
 Spectrum Figure
-===============
+---------------
 
   - the settings common to all three features -> the scale of the three axes; used when appropriate
   - the spectrum figure in detail (how the axes change; the color coding; the units)
@@ -84,10 +84,41 @@ Spectrum Figure
   - the config
   - results
 
-The spectrum figure displays the signal power density over frequency at the current time, at a given position
-(such as a network node or probe). **TODO** colors
+**V1** The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The visualization is enabled with the visualizer's :par:`displaySpectrums` parameter.
+
+**V2** The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The power axis is logarithmic, and the power density is displayed in units of `dBmWpMHz`, i.e. dBmW/MHz.
+The visualization is enabled with the visualizer's :par:`displaySpectrums` parameter.
+
+.. **TODO** colors
+
+.. **V1** The spectrum plots are color coded. By default, the spectrum figure displays the total power density at given location (blue curve),
+   except for the transmitting and receiveing nodes, where the transmitted/received signal (green curve) is displayed
+   separately from other signals/noises (red curve).
+
+The spectrum plots are color coded. By default, the total power density is shown at the given position (blue curve),
+except for the transmitting and receiveing nodes, where the transmitted/received signal (green curve) is displayed
+separately from other signals/noises (red curve).
 
 **TODO** image
+
+.. .. figure:: media/signal.png
+
+.. |signal| image:: media/signal3.png
+
+.. |total| image:: media/total.png
+
++---------+----------+
+| |total| | |signal| |
++---------+----------+
+
+**TODO** it should be on the same scale; it should be a receiver
+
+The visualizers :par:`spectrumMode` parameter specifies what to display in the spectrum figures,
+one of the following:
+
+- ``total``: display the total power density in the transmission medium at that location (visualizes signals at every node)
+- ``signal``: display the power density of the transmitted or received signal (only visualizes signals at the transmitter and receiver nodes) -> **TODO** displays the noise/interfering signals as well
+- ``auto`` (default): display the transmitted or received signal if there is any, otherwise display the total power density (visualizes signals at every node)
 
 All spectrum figures, spectrograms and power density maps in the network use the same scale
 in power, frequency and time, so the visualizations can be compared. The scale is automatic
@@ -113,19 +144,36 @@ For the complete list of shared parameters, see the NED documentation of :ned:`M
   - even though not all three features make use of all three axes, the settings are global
   - the parameters
 
-By default, the spectrum figure displays the total power density at given location,
-except for the transmitting and receiveing nodes, where the transmitted/received signal is displayed
-separately from other signals/noises.
-
-The visualizers :par:`spectrumMode` parameter specifies what to display in the spectrum figures,
-one of the following:
-
-- ``total``: display the total power density in the transmission medium at that location (visualizes signals at every node)
-- ``signal``: display the power density of the transmitted or received signal (only visualizes signals at the transmitter and receiver nodes)
-- ``auto`` (default): display the transmitted or received signal if there is any, otherwise display the total power density (visualizes signals at every node)
-
 .. **TODO** the mode parameter
 
-**TODO** enable
+.. **TODO** enable
+
+**TODO** the default unit dBmWpMHz
 
 .. **TODO** can only visualize power density -> when there is a frequency axis, its obvious;
+
+In the example simulation demonstrating the spectrum figure, two pairs of hosts communicate with each other on different, but adjacent Wifi channels. The simulation uses the following network:
+
+**TODO** network image
+
+In the simulation, ``host1`` sends UDP packets to ``host2``, and ``host3`` to ``host4``. Here is the configuration in omnetpp.ini:
+
+.. literalinclude:: ../omnetpp.ini
+   :start-at: Config SpectrumFigure
+   :end-before: Config Spectrogram
+   :language: ini
+
+Spectrogram
+-----------
+
+The spectrogram displays the signal power density over frequency, and how it changed/will change in time, at a give position.
+
+The spectrogram displays the signal power density over frequency and time, at a given position.
+The signal power density is color coded as a heatmap...more intensive colors meaning higher power density...it uses the same color coding as the spectrum figure...that is blue for total power density, green for transmitted/received signal and red for interfering signals and noise.
+It shows how the power density was in the past and how it will in the future...**TODO**
+
+The visualization is enabled with the visualizer's :par:`displaySpectrograms` parameter.
+Similarly to the spectrum figure, the :par:`spectrogramMode` parameter can specify what to display,
+``total``, ``signal`` or ``auto``...
+
+The scale is the global scale...
