@@ -9,21 +9,21 @@ import inet.physicallayer.ieee80211.packetlevel.Ieee80211ScalarRadioMedium;
 import inet.visualizer.integrated.IntegratedVisualizer;
 
 
-network SpectrumShowcaseBaseNetwork
+network SpectrumShowcaseSpectrumFigureSpectrogramNetwork
 {
     @display("bgb=661,400");
     submodules:
         host1: AdhocHost {
-            @display("p=231,201");
+            @display("p=285,149");
         }
         host2: AdhocHost {
-            @display("p=459,201");
+            @display("p=513,149");
         }
         host3: AdhocHost {
-            @display("p=346,94");
+            @display("p=400,42");
         }
         host4: AdhocHost {
-            @display("p=346,306");
+            @display("p=400,254");
         }
         configurator: Ipv4NetworkConfigurator {
             @display("p=75,55");
@@ -31,56 +31,43 @@ network SpectrumShowcaseBaseNetwork
         visualizer: IntegratedVisualizer {
             @display("p=75,125");
         }
-        probe: Probe {
-            @display("p=100,100");
-        }
-}
-
-network SpectrumShowcaseOneScalarRadioMediumModule extends SpectrumShowcaseBaseNetwork
-{
-    submodules:
-        radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=74,191");
-        }
-}
-
-network SpectrumShowcaseTwoScalarRadioMediumModules extends SpectrumShowcaseBaseNetwork
-{
-    submodules:
-        radioMedium1: Ieee80211ScalarRadioMedium {
-            @display("p=74,191");
-        }
-        radioMedium2: Ieee80211ScalarRadioMedium {
-            @display("p=74,255");
-        }
-}
-
-network SpectrumShowcasePartiallyOverlappingFrequencyBands extends SpectrumShowcaseBaseNetwork
-{
-    submodules:
         radioMedium: Ieee80211DimensionalRadioMedium {
-            @display("p=74,184");
+            @display("p=75,184");
         }
         physicalEnvironment: PhysicalEnvironment {
-            @display("p=65,257");
+            @display("p=75,257");
+        }
+        probe: Probe {
+            @display("p=180,42");
         }
 }
+
+//network SpectrumShowcasePartiallyOverlappingFrequencyBands extends SpectrumShowcaseBaseNetwork
+//{
+//    submodules:
+//        radioMedium: Ieee80211DimensionalRadioMedium {
+//            @display("p=74,184");
+//        }
+//        physicalEnvironment: PhysicalEnvironment {
+//            @display("p=65,257");
+//        }
+//}
 
 network SpectrumShowcasePowerDensityMapNetwork
 {
     @display("bgb=661,400");
     submodules:
         host1: AdhocHost {
-            @display("p=150,125");
+            @display("p=250,125");
         }
         host2: AdhocHost {
-            @display("p=320,201");
+            @display("p=420,201");
         }
         host3: AdhocHost {
-            @display("p=280,120");
+            @display("p=380,120");
         }
         host4: AdhocHost {
-            @display("p=240,200");
+            @display("p=340,200");
         }
         configurator: Ipv4NetworkConfigurator {
             @display("p=75,55");

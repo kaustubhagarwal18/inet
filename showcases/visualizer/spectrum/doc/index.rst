@@ -156,11 +156,36 @@ In the example simulation demonstrating the spectrum figure, two pairs of hosts 
 
 **TODO** network image
 
+.. figure:: media/network.png
+   :width: 100%
+   :align: center
+
 In the simulation, ``host1`` sends UDP packets to ``host2``, and ``host3`` to ``host4``. Here is the configuration in omnetpp.ini:
 
 .. literalinclude:: ../omnetpp.ini
    :start-at: Config SpectrumFigure
    :end-before: Config Spectrogram
+   :language: ini
+
+The ``General`` configuration contains keys pertaining to all simulations, configuring background noise:
+
+.. literalinclude:: ../omnetpp.ini
+   :start-at: backgroundNoise.typename
+   :end-at: backgroundNoise.powerSpectralDensity
+   :language: ini
+
+Setting the radio type to dimensional:
+
+.. literalinclude:: ../omnetpp.ini
+   :start-at: radio.typename
+   :end-at: transmitter.frequencyGains
+   :language: ini
+
+And configuring the Wifi channels:
+
+.. literalinclude:: ../omnetpp.ini
+   :start-at: channelNumber = 0
+   :end-at: channelNumber = 3
    :language: ini
 
 Spectrogram
