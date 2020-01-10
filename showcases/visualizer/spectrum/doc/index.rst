@@ -29,6 +29,9 @@ About the Visualizer
 propagating signals and other stuff that the radio medium activity showcase is about. The module
 can visualize spectrums in the following ways:
 
+**V3** :ned:`RadioMediumVisualizer` can visualize the spectrums of radio signals using three kinds of figures (in addition to visualizing propagating signals, signal departures/arrivals, and communication/interference ranges, described in **TODO** the other showcase.)
+The module can visualize spectrums in the following ways:
+
 .. - can visualize spectral stuff
    - there are three features for that
    - spectrum figure: display the spectrum of signals, including noise, at nodes (and probes) currently
@@ -37,40 +40,40 @@ can visualize spectrums in the following ways:
    - power density map: display the power density at all points in the scene, at a certain frequency,
   with colors
 
-- **Spectrum figure:** The figure can display the signal power as a function of frequency at a given point in space, i.e. at network nodes, at the current time. When the spectrum is displayed at the transmitting and receiving nodes, the transmitted/received signal and other signals (and noises) are displayed separately.
-- **Spectrogram:** The spectrogram displays the signal power as a function of frequency at a given point in space, and displays how the spectrum changed in time (and how it will change in time) **TODO** more on that. It uses color coding for the signal power.
-- **Power Density Map:** The power density map displays the signal power as a heatmap on the scene at the current time, at a given frequency. The resolution can be adjusted for more/less detail. Also, it can display the heatmap only in the vicinity of network nodes. High computing capacity needed.
+- **Spectrum figure:** The figure can display the signal power density as a function of frequency at a given point in space, i.e. at network nodes, at the current time. When the spectrum is displayed at the transmitting and receiving nodes, the transmitted/received signal and other signals (and noises) are displayed separately.
+- **Spectrogram:** The spectrogram displays the signal power density as a function of frequency at a given point in space, and displays how the spectrum changed in time (and how it will change in time) **TODO** more on that. It uses color coding for the signal power.
+- **Power Density Map:** The power density map displays the signal power density as a heatmap on the scene at the current time, at a given frequency. The resolution can be adjusted for more/less detail. Also, it can display the heatmap only in the vicinity of network nodes. High computing capacity needed.
 
 .. Note that the spectrums are only represented and can be visualized when using the dimensional analog model.
 
-.. note:: The spectrums are only represented and can be visualized when using the dimensional analog model.
+.. .. note:: The spectrums are only represented and can be visualized when using the dimensional analog model.
 
-.. note:: The spectrums can only be represented and visualized when using the dimensional analog model.
+.. .. note:: The spectrums can only be represented and visualized when using the dimensional analog model.
 
 .. note:: The spectrums are only represented and can only be visualized when using the dimensional analog model.
 
-.. note:: The spectrums are represented and can be visualized only when using the dimensional analog model.
+.. .. note:: The spectrums are represented and can be visualized only when using the dimensional analog model.
 
-structure:
+.. structure:
 
-- goals -> inet can do the spectral visualization stuff
-- about the visualizer -> these are the features of the medium visualizer as well -> the three stuff
-- the probe -> this can check signal power and spectrum everywhere and its draggable in real time so its useful
+  - goals -> inet can do the spectral visualization stuff
+  - about the visualizer -> these are the features of the medium visualizer as well -> the three stuff
+  - the probe -> this can check signal power and spectrum everywhere and its draggable in real time so its useful
 
 The Probe Module
 ================
 
-The :ned:`Probe` module is technically a network node that contains only an antenna submodule,
-and a mobility submodule.
-It can detect the signal power present at its location, which can be displayed using the visualizer.
-The probe can be dragged with the mouse as the simulation is running to examine the signals present
-at any point in the network. This is useful for troubleshooting and understanding the situation.
+**V1** The :ned:`Probe` module can detect the signals present at its location, which can be displayed using the visualizer. It is technically a network node that contains only an antenna submodule (to detect signals), and a mobility submodule (to have position).
+The probe can be dragged with the `shift + left mouse click` as the simulation is running to examine the signals present at any point in the network. This is useful for troubleshooting and understanding the situation.
 
-**TODO** the other way around (what it can do, then what is it -> also what the submodules do)
+**V2** The :ned:`Probe` module can detect the signals present at its position; the visualizer can display the total power density. The probe is technically a network node that contains only an antenna submodule (to detect signals), and a mobility submodule (to have position).
+The probe can be dragged with `shift + left mouse click` as the simulation is running to examine the signals present at any point in the network. This is useful for troubleshooting and understanding the situation.
 
-**TODO** shift-left click
+.. **TODO** the other way around (what it can do, then what is it -> also what the submodules do)
 
-**TODO** total power
+.. **TODO** shift-left click
+
+.. **TODO** total power
 
 .. figure:: media/probe.png
    :align: center
@@ -84,9 +87,11 @@ Spectrum Figure
   - the config
   - results
 
-**V1** The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The visualization is enabled with the visualizer's :par:`displaySpectrums` parameter.
+.. **V1** The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The visualization is enabled with the visualizer's :par:`displaySpectrums` parameter.
 
-**V2** The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The power axis is logarithmic, and the power density is displayed in units of `dBmWpMHz`, i.e. dBmW/MHz.
+.. **V2**
+
+The spectrum figure displays the signal power density over frequency at the current time, at a given position (such as a network node or probe). The power axis is logarithmic, and the power density is displayed in units of `dBmWpMHz`, i.e. dBmW/MHz.
 The visualization is enabled with the visualizer's :par:`displaySpectrums` parameter.
 
 .. **TODO** colors
@@ -97,7 +102,7 @@ The visualization is enabled with the visualizer's :par:`displaySpectrums` param
 
 The spectrum plots are color coded. By default, the total power density is shown at the given position (blue curve),
 except for the transmitting and receiveing nodes, where the transmitted/received signal (green curve) is displayed
-separately from other signals/noises (red curve).
+separately from interfering signals/noises (red curve).
 
 **TODO** image
 
@@ -113,7 +118,7 @@ separately from other signals/noises (red curve).
 
 **TODO** it should be on the same scale; it should be a receiver
 
-The visualizers :par:`spectrumMode` parameter specifies what to display in the spectrum figures,
+The visualizer's :par:`spectrumMode` parameter specifies what to display in the spectrum figures,
 one of the following:
 
 - ``total``: display the total power density in the transmission medium at that location (visualizes signals at every node)
@@ -135,7 +140,7 @@ For the complete list of shared parameters, see the NED documentation of :ned:`M
 
 .. The power and frequency axes of the figure are
 
-**TODO** image
+.. **TODO** image
 
 ..   - all figures share the same scale
   - which is automatic by default, determined by the bandwidth, center frequency and power of signals present in the network. Note that the scale can extend over time as new signals occur in the network, but it can only extend
@@ -148,44 +153,48 @@ For the complete list of shared parameters, see the NED documentation of :ned:`M
 
 .. **TODO** enable
 
-**TODO** the default unit dBmWpMHz
+.. **TODO** the default unit dBmWpMHz
 
 .. **TODO** can only visualize power density -> when there is a frequency axis, its obvious;
 
 In the example simulation demonstrating the spectrum figure, two pairs of hosts communicate with each other on different, but adjacent Wifi channels. The simulation uses the following network:
 
-**TODO** network image
+.. **TODO** network image
 
-.. figure:: media/network.png
+.. .. figure:: media/network.png
+      :width: 90%
+      :align: center
+
+.. figure:: media/network2.png
    :width: 100%
    :align: center
 
-In the simulation, ``host1`` sends UDP packets to ``host2``, and ``host3`` to ``host4``. Here is the configuration in omnetpp.ini:
-
-.. literalinclude:: ../omnetpp.ini
-   :start-at: Config SpectrumFigure
-   :end-before: Config Spectrogram
-   :language: ini
-
-The ``General`` configuration contains keys pertaining to all simulations, configuring background noise:
+The ``General`` configuration contains keys pertaining to all simulations; it configures background noise:
 
 .. literalinclude:: ../omnetpp.ini
    :start-at: backgroundNoise.typename
    :end-at: backgroundNoise.powerSpectralDensity
    :language: ini
 
-Setting the radio type to dimensional:
+Sets the radio type to dimensional, and configures a more realistic signal shape in frequency (the spectral mask in the 802.11 standard):
 
 .. literalinclude:: ../omnetpp.ini
    :start-at: radio.typename
    :end-at: transmitter.frequencyGains
    :language: ini
 
-And configuring the Wifi channels:
+And configures the Wifi channels (the host-pairs are on different, but interfering channels):
 
 .. literalinclude:: ../omnetpp.ini
    :start-at: channelNumber = 0
    :end-at: channelNumber = 3
+   :language: ini
+
+In the simulation demonstrating the spectrum figure (``SpectrumFigure`` config), ``host1`` sends UDP packets to ``host2``, and ``host3`` to ``host4``. Here is the configuration in omnetpp.ini:
+
+.. literalinclude:: ../omnetpp.ini
+   :start-at: Config SpectrumFigure
+   :end-before: Config Spectrogram
    :language: ini
 
 Spectrogram
